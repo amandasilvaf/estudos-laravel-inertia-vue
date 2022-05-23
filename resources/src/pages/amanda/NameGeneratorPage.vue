@@ -2,51 +2,46 @@
   import 'bootstrap/dist/css/bootstrap.css';
   import 'font-awesome/css/font-awesome.css';
 
-  import { ref, reactive, onMounted } from 'vue';
+  import { ref, reactive, computed } from 'vue';
 
   const prefixes = reactive(['Air', 'Jet', 'Flight']);
   const sufixes = reactive(['Hub', 'Station', 'Mart']);
-  const domains = reactive(['']);
+
   const prefix = ref('');
   const sufix = ref('');
-
-  function generateDomain() {
-    domains.splice(0);
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const pref of prefixes) {
-      // eslint-disable-next-line no-restricted-syntax
-      for (const suf of sufixes) {
-        const newDomain = pref + suf;
-        domains.push(newDomain);
-      }
-    }
-  }
 
   function addPrefix(newPrefix) {
     prefixes.push(newPrefix);
     prefix.value = '';
-    generateDomain();
   }
 
   function addSufix(newSufix) {
     sufixes.push(newSufix);
     sufix.value = '';
-    generateDomain();
   }
 
   function deletePrefix(p) {
     prefixes.splice(prefixes.indexOf(p), 1);
-    generateDomain();
   }
 
   function deleteSufix(s) {
     sufixes.splice(sufixes.indexOf(s), 1);
-    generateDomain();
   }
 
-  onMounted(() => {
-    generateDomain();
+  const domains = computed(() => {
+    // eslint-disable-next-line no-console
+    console.log('generating domains..');
+    const arrayDomains = reactive([]);
+    // eslint-disable-next-line no-restricted-syntax
+    for (const pref of prefixes) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const suf of sufixes) {
+        const newDomain = pref + suf;
+        arrayDomains.push(newDomain);
+      }
+    }
+
+    return arrayDomains;
   });
 </script>
 
@@ -63,7 +58,7 @@
         <div class="row">
           <div class="col-md">
             <h5>
-              Prefixos <span class="badge bg-info">{{ prefixes.length }}</span>
+              Prefixes <span class="badge bg-info">{{ prefixes.length }}</span>
             </h5>
             <div class="card">
               <div class="card-body">
@@ -108,7 +103,7 @@
           </div>
           <div class="col-md">
             <h5>
-              Sufixos <span class="badge bg-info">{{ sufixes.length }}</span>
+              Sufixes <span class="badge bg-info">{{ sufixes.length }}</span>
             </h5>
             <div class="card">
               <div class="card-body">
@@ -154,7 +149,7 @@
         </div>
         <br />
         <h5>
-          Domínios <span class="badge bg-info">{{ domains.length }}</span>
+          Domains <span class="badge bg-info">{{ domains.length }}</span>
         </h5>
         <div class="card">
           <div class="card-body">
