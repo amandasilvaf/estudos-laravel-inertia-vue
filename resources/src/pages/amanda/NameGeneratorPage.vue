@@ -3,6 +3,7 @@
   import 'font-awesome/css/font-awesome.css';
 
   import { ref, reactive, computed } from 'vue';
+  import ItemList from './components/ItemList.vue';
 
   const prefixes = reactive(['Air', 'Jet', 'Flight']);
   const sufixes = reactive(['Hub', 'Station', 'Mart']);
@@ -53,98 +54,24 @@
         <br />
       </div>
     </div>
+
     <div id="main">
       <div class="container">
         <div class="row">
           <div class="col-md">
-            <h5>
-              Prefixes <span class="badge bg-info">{{ prefixes.length }}</span>
-            </h5>
-            <div class="card">
-              <div class="card-body">
-                <ul class="list-group">
-                  <li
-                    v-for="prefix in prefixes"
-                    :key="prefix"
-                    class="list-group-item"
-                  >
-                    <div class="row">
-                      <div class="col-md">
-                        {{ prefix }}
-                      </div>
-                      <div class="col-md text-right">
-                        <button
-                          class="btn btn-info"
-                          @click="deletePrefix(prefix)"
-                        >
-                          <span class="fa fa-trash" />
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <br />
-                <div class="input-group">
-                  <input
-                    v-model="prefix"
-                    class="form-control"
-                    type="text"
-                    placeholder="Informe o prefixo"
-                    @keyup.enter="addPrefix(prefix)"
-                  />
-                  <div class="input-group-append">
-                    <button class="btn btn-info" @click="addPrefix(prefix)">
-                      <span class="fa fa-plus" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ItemList
+              :items="prefixes"
+              @add-item="(item) => addPrefix(item)"
+              @delete-item="(item) => deletePrefix(item)"
+            />
           </div>
+
           <div class="col-md">
-            <h5>
-              Sufixes <span class="badge bg-info">{{ sufixes.length }}</span>
-            </h5>
-            <div class="card">
-              <div class="card-body">
-                <ul class="list-group">
-                  <li
-                    v-for="sufix in sufixes"
-                    :key="sufix"
-                    class="list-group-item"
-                  >
-                    <div class="row">
-                      <div class="col-md">
-                        {{ sufix }}
-                      </div>
-                      <div class="col-md text-right">
-                        <button
-                          class="btn btn-info"
-                          @click="deleteSufix(sufix)"
-                        >
-                          <span class="fa fa-trash" />
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <br />
-                <div class="input-group">
-                  <input
-                    v-model="sufix"
-                    class="form-control"
-                    type="text"
-                    placeholder="Informe o sufixo"
-                    @keyup.enter="addSufix(sufix)"
-                  />
-                  <div class="input-group-append">
-                    <button class="btn btn-info" @click="addSufix(sufix)">
-                      <span class="fa fa-plus" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ItemList
+              :items="sufixes"
+              @add-item="(item) => addSufix(item)"
+              @delete-item="(item) => deleteSufix(item)"
+            />
           </div>
         </div>
         <br />
