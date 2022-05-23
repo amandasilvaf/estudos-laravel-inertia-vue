@@ -2,11 +2,11 @@
   import 'bootstrap/dist/css/bootstrap.css';
   import 'font-awesome/css/font-awesome.css';
 
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, onMounted } from 'vue';
 
   const prefixes = reactive(['Air', 'Jet', 'Flight']);
   const sufixes = reactive(['Hub', 'Station', 'Mart']);
-  const domains = reactive(['AirHub']);
+  const domains = reactive(['']);
   const prefix = ref('');
   const sufix = ref('');
 
@@ -44,6 +44,10 @@
     sufixes.splice(sufixes.indexOf(s), 1);
     generateDomain();
   }
+
+  onMounted(() => {
+    generateDomain();
+  });
 </script>
 
 <template>
@@ -51,9 +55,6 @@
     <div id="slogan">
       <div class="text-center">
         <h1>Domains Generator <span class="fa fa-check" /></h1>
-        <button class="btn btn-info btn-sm" @click="generateDomain()">
-          Gerar dominios
-        </button>
         <br />
       </div>
     </div>
