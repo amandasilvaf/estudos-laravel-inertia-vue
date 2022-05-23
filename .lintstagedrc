@@ -1,0 +1,6 @@
+{
+  "*.{ts,js,vue}": [
+    "eslint --ext .ts,js,vue --ignore-path .gitignore --fix",
+    "prettier --ignore-path .gitignore --write"
+  ]
+}

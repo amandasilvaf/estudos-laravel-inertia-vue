@@ -5,7 +5,7 @@
 <template>
   <div
     id="app-sidebar-2"
-    class="bg-bluegray-800 h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 select-none"
+    class="bg-bluegray-800 h-screen hidden lg:block flex-shrink-0 fixed lg:static left-0 top-0 z-1 select-none"
     style="width: 280px"
   >
     <div class="flex flex-column h-full">
@@ -33,6 +33,23 @@
               >
                 <i class="pi pi-user mr-2" />
                 <span class="font-medium">Amanda</span>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link :href="route('nameGenerator')" class="no-underline">
+              <a
+                v-ripple
+                class="flex align-items-center cursor-pointer p-3 hover:bg-bluegray-900 border-round text-bluegray-100 hover:text-bluegray-50 transition-duration-150 transition-colors p-ripple"
+                :class="{
+                  'bg-bluegray-900 border-round text-bluegray-100 text-bluegray-50 transition-duration-150 transition-colors p-ripple':
+                    $page.url.startsWith('/nameGenerator'),
+                }"
+              >
+                <i class="pi pi-user mr-2" />
+                <span class="font-medium"
+                  >Name Generator By Rodrigo Branas</span
+                >
               </a>
             </Link>
           </li>

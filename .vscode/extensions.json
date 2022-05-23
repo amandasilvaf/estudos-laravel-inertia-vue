@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "christian-kohler.path-intellisense",
+    "Nabil.ziggy-routes",
+    "johnsoncodehk.volar",
+    "steoates.autoimport"
+  ]
+}

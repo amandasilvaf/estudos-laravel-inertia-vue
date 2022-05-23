@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $users = DB::table('users')
         ->where('name', 'like', "%$search%")
-        ->paginate(5);
+        ->paginate(1);
 
         return inertia('amanda.index.ListUserPage', ['users' => $users]);
     }
@@ -141,5 +141,11 @@ class UserController extends Controller
         }catch(Exception $ex){
             return Redirect::route('users.index')->with('error', 'Não foi possível deletar o registro.');
         }
+    }
+
+
+    public function nameGenerator()
+    {
+        return inertia('amanda.NameGeneratorPage');
     }
 }

@@ -1,0 +1,83 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended",
+    "@vue/typescript/recommended",
+    "prettier",
+    "airbnb-base"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "plugins": ["vue", "@typescript-eslint", "prettier", "html"],
+  "rules": {
+    "vue/no-unused-vars": "error",
+    "vue/multi-word-component-names": "off",
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "any"
+        }
+      }
+    ],
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": ["docs", "script", "template", "style"]
+      }
+    ],
+
+    "indent": "off",
+    "max-len": ["off", { "code": 80, "ignoreUrls": true }],
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": [
+      "error",
+      "after",
+      { "overrides": { "?": "before", ":": "before" } }
+    ],
+
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-alert": "error",
+    "no-mixed-operators": "error",
+
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "singleQuote": true,
+        "arrowParens": "always",
+        "trailingComma": "all",
+        "endOfLine": "auto",
+        "printWidth": 80,
+        "vueIndentScriptAndStyle": true
+      }
+    ],
+
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ],
+
+    "import/no-named-as-default": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": [
+      "error",
+      "never",
+      { "ignorePackages": true, "pattern": { "svg": "ignorePackages" , "vue": "ignorePackages" } }
+    ]
+  },
+  "ignorePatterns": ["resources/scripts/libs/ziggy/routes.ts"]
+}

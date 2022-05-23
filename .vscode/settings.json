@@ -1,0 +1,18 @@
+{
+  "vetur.validation.template": false,
+  "vetur.format.defaultFormatter.html": "none",
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["vue", "javascript", "javascriptreact", "html"],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

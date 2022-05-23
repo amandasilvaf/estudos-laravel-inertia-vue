@@ -6,10 +6,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
 import ConfirmationService from 'primevue/confirmationservice';
-
-import VueSweetalert2 from 'vue-sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
-
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import InputMask from 'primevue/inputmask';
@@ -53,7 +49,6 @@ createInertiaApp({
       })
       .use(ToastService)
       .use(ConfirmationService)
-      .use(VueSweetalert2)
       .component('Toast', Toast)
       .component('InputMask', InputMask)
       .component('InputNumber', InputNumber)

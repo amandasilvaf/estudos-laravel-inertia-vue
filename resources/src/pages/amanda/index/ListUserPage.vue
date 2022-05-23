@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 <script setup lang="ts">
   // eslint-disable-next-line object-curly-newline
   import {
@@ -89,17 +88,6 @@
   //     }),
   //   );
   // }
-
-   const msgDoFilho = ref('No child msg yet');
-
-  function alertar() {
-    toast.add({
-      severity: 'info',
-      summary: 'Hi,' . msgDoFilho.value,
-      life: 5000,
-    });
-  }
-
   onUpdated(() => {
     if (refProps.value.success) {
       const msg = refProps.value.success;
@@ -118,11 +106,9 @@
         life: 5000,
       });
     }
-
   });
 
   onMounted(() => {
-          
     if (refProps.value.success) {
       const msg = refProps.value.success;
       toast.add({
@@ -139,13 +125,7 @@
         life: 5000,
       });
     }
-
   });
-
-
- 
-
-
 </script>
 
 <template layout="Layout">
@@ -168,7 +148,7 @@
     </div>
   </div>
   <div class="col-12 md:col-6 mb-5">
-    <!-- <form @submit.prevent="onSubmit()"> -->
+    <!-- <form @submit.prevent="onSubmit"> -->
     <div class="p-inputgroup">
       <InputText
         id="search"
