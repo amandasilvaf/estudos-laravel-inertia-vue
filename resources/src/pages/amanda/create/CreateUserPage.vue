@@ -98,7 +98,9 @@
           name="avatar"
           @input="form.avatar = $event.target.files[0]"
         />
-
+        <div v-if="form.errors.avatar" class="p-error">
+          {{ form.errors.avatar }}
+        </div>
         <progress
           v-if="form.progress"
           :value="form.progress.percentage"

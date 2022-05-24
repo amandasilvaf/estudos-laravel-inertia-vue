@@ -48,19 +48,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->file);
-        $now = Carbon::now();
-        $key = $request->avatar->store($now->format('Y') . '/' . $now->format('m'));
-        $url = Storage::url($key);
 
         $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:5']
-
+            'password' => ['required', 'min:5'],
+            'avatar' => ['required', 'image']
         ]);
 
       try{
+
+        $now = Carbon::now();
+        $key = $request->avatar->store($now->format('Y') . '/' . $now->format('m'));
+        $url = Storage::url($key);
 
         User::create([
             'name' => $request->name,
