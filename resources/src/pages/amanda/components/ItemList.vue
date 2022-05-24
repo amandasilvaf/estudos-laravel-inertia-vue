@@ -3,6 +3,7 @@
 
   type ComponentProps = {
     items: string[];
+    title: string;
   };
 
   const props = defineProps<ComponentProps>();
@@ -10,12 +11,12 @@
 
   const item = ref('');
 
-  function addItem(newItem) {
-    emit('addItem', newItem);
+  function addItem(itemToInsert: string) {
+    emit('addItem', itemToInsert);
     item.value = '';
   }
 
-  function deleteItem(itemToDelete) {
+  function deleteItem(itemToDelete: string) {
     emit('deleteItem', itemToDelete);
     item.value = '';
   }
@@ -24,12 +25,12 @@
 <template>
   <div>
     <h5>
-      Item <span class="badge bg-info">{{ items.length }}</span>
+      {{ props.title }} <span class="badge bg-info">{{ items.length }}</span>
     </h5>
     <div class="card">
       <div class="card-body">
         <ul class="list-group">
-          <li v-for="item in items" :key="item" class="list-group-item">
+          <li v-for="item in props.items" :key="item" class="list-group-item">
             <div class="row">
               <div class="col-md">
                 {{ item }}

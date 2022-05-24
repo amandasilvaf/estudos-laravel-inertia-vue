@@ -2,23 +2,19 @@
   import 'bootstrap/dist/css/bootstrap.css';
   import 'font-awesome/css/font-awesome.css';
 
-  import { ref, reactive, computed } from 'vue';
+  import { reactive, computed } from 'vue';
   import ItemList from './components/ItemList.vue';
+  import DomainList from './components/DomainList.vue';
 
   const prefixes = reactive(['Air', 'Jet', 'Flight']);
   const sufixes = reactive(['Hub', 'Station', 'Mart']);
 
-  const prefix = ref('');
-  const sufix = ref('');
-
   function addPrefix(newPrefix) {
     prefixes.push(newPrefix);
-    prefix.value = '';
   }
 
   function addSufix(newSufix) {
     sufixes.push(newSufix);
-    sufix.value = '';
   }
 
   function deletePrefix(p) {
@@ -60,6 +56,7 @@
         <div class="row">
           <div class="col-md">
             <ItemList
+              title="Prefixes"
               :items="prefixes"
               @add-item="(item) => addPrefix(item)"
               @delete-item="(item) => deletePrefix(item)"
@@ -68,6 +65,7 @@
 
           <div class="col-md">
             <ItemList
+              title="Sufixes"
               :items="sufixes"
               @add-item="(item) => addSufix(item)"
               @delete-item="(item) => deleteSufix(item)"
@@ -75,6 +73,7 @@
           </div>
         </div>
         <br />
+        <DomainList />
         <h5>
           Domains <span class="badge bg-info">{{ domains.length }}</span>
         </h5>
@@ -99,7 +98,8 @@
 <style scoped>
   #slogan {
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    background-color: antiquewhite;
   }
 
   #main {
