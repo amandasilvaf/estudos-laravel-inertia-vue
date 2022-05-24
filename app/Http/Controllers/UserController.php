@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $users = DB::table('users')
         ->where('name', 'like', "%$search%")
-        ->paginate(1);
+        ->paginate(10);
 
         return inertia('amanda.index.ListUserPage', ['users' => $users]);
     }

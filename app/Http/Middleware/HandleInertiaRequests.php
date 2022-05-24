@@ -42,9 +42,9 @@ class HandleInertiaRequests extends Middleware
             	'php' => PHP_VERSION,
             	'laravel' => \Illuminate\Foundation\Application::VERSION
             ],
-            'errors' => function() use ($request){
-                return $this->resolveValidationErrors($request);
-            },
+            // 'errors' => function() use ($request){
+            //     return $this->resolveValidationErrors($request);
+            // },
             'auth' => [
                 'user' => [
                     'username' => 'Amanda F.',
@@ -56,3 +56,5 @@ class HandleInertiaRequests extends Middleware
         ]);
     }
 }
+
+
