@@ -17,6 +17,7 @@
   import { usePage } from '@inertiajs/inertia-vue3';
   // import MyPaginator from '@/src/Shared/MyPaginator.vue';
 
+  import Image from 'primevue/image';
   import MyPaginator2 from '@/src/Shared/MyPaginator2.vue';
 
   const toast = useToast();
@@ -26,6 +27,7 @@
     id: number;
     name: string;
     email: string;
+    avatar: string;
   };
 
   type UserTableProps = {
@@ -177,6 +179,11 @@
 
   <div>
     <DataTable :value="users.data" data-key="id">
+      <Column field="avatar" header="Avatar">
+        <template #body="{ data }">
+          <Image :src="data.image_url" alt="Image" width="80" />
+        </template>
+      </Column>
       <Column field="name" header="Name">
         <template #body="{ data }">
           {{ data.name }}

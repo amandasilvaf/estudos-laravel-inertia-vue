@@ -4,7 +4,6 @@
 
   import { route } from '@scripts/libs/ziggy';
   import { useForm } from '@inertiajs/inertia-vue3';
-  // import FileUpload from 'primevue/fileupload';
 
   const toast = useToast();
 
@@ -19,7 +18,6 @@
     name: '',
     email: '',
     password: '',
-    avatar: null,
   });
 
   function submit() {
@@ -81,34 +79,8 @@
           {{ form.errors.password }}
         </div>
       </div>
-      <div class="field col-12 md:col-4">
-        <!-- <FileUpload
-          id="avatar"
-          mode="basic"
-          name="avatar"
-          accept="image/*"
-          :max-file-size="1000000"
-          class="p-button-outlined p-button-plain"
-          choose-label="Upload Image"
-          @input="form.avatar = $event.target.files[0]"
-        /> -->
-        <input
-          id="avatar"
-          type="file"
-          name="avatar"
-          @input="form.avatar = $event.target.files[0]"
-        />
 
-        <progress
-          v-if="form.progress"
-          :value="form.progress.percentage"
-          max="100"
-        >
-          {{ form.progress.percentage }}%
-        </progress>
-      </div>
-
-      <div class="my-5">
+      <div>
         <Button label="Salvar" type="submit" :disabled="form.processing" />
         <Button
           class="p-button-outlined p-button-info ml-2"

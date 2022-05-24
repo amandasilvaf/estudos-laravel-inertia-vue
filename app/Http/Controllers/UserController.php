@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -18,6 +19,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
         $search = $request->search;
 
         $users = DB::table('users')
@@ -46,10 +48,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->file);
+        $now = Carbon::now();
+        $key = $request->avatar->store($now->format('Y') . '/' . $now->format('m'));
+        $url = Storage::url($key);
+
         $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:5']
+
         ]);
 
       try{
@@ -57,12 +65,15 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'image_key' => $key,
+            'image_url' => $url,
         ]);
 
             return Redirect::route('users.index')->with('success', 'Registro cadastrado com sucesso!');
 
         }catch(Exception $ex){
+            dd($ex);
             return Redirect::route('users.index')->with('error', 'Não foi possível cadastrar o registro.');
         }
     }
