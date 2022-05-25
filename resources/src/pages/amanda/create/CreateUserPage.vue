@@ -4,7 +4,7 @@
 
   import { route } from '@scripts/libs/ziggy';
   import { useForm } from '@inertiajs/inertia-vue3';
-  // import FileUpload from 'primevue/fileupload';
+  import FileUpload from 'primevue/fileupload';
 
   const toast = useToast();
 
@@ -81,23 +81,25 @@
           {{ form.errors.password }}
         </div>
       </div>
-      <div class="field col-12 md:col-4">
-        <!-- <FileUpload
-          id="avatar"
-          mode="basic"
-          name="avatar"
-          accept="image/*"
-          :max-file-size="1000000"
-          class="p-button-outlined p-button-plain"
-          choose-label="Upload Image"
-          @input="form.avatar = $event.target.files[0]"
-        /> -->
-        <input
-          id="avatar"
-          type="file"
-          name="avatar"
-          @input="form.avatar = $event.target.files[0]"
-        />
+      <div class="field mb-4 col-12 md:col-6">
+        <label for="avatar" class="font-medium">Avatar</label>
+        <div class="flex align-items-center">
+          <img
+            src="@pages/user/profile/assets/images/avatar-f-4.png"
+            class="mr-4"
+          />
+          <FileUpload
+            mode="basic"
+            name="avatar"
+            url="./upload.php"
+            accept="image/*"
+            :max-file-size="1000000"
+            class="p-button-outlined p-button-plain"
+            choose-label="Upload Image"
+            @input="form.avatar = $event.target.files[0]"
+          />
+        </div>
+
         <div v-if="form.errors.avatar" class="p-error">
           {{ form.errors.avatar }}
         </div>
