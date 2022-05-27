@@ -45,3 +45,6 @@ Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users
 Route::delete('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
 
 Route::get('/nameGenerator', [UserController::class, 'nameGenerator'])->name('nameGenerator');
+
+
+Route::get('/usersInJson', [UserController::class, 'jsonUsers']);

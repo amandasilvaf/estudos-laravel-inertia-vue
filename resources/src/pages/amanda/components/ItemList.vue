@@ -30,13 +30,17 @@
     <div class="card">
       <div class="card-body">
         <ul class="list-group">
-          <li v-for="item in props.items" :key="item" class="list-group-item">
+          <li
+            v-for="itemList in props.items"
+            :key="itemList"
+            class="list-group-item"
+          >
             <div class="row">
               <div class="col-md">
-                {{ item }}
+                {{ itemList }}
               </div>
               <div class="col-md text-right">
-                <button class="btn btn-info" @click="deleteItem(item)">
+                <button class="btn btn-info" @click="deleteItem(itemList)">
                   <span class="fa fa-trash" />
                 </button>
               </div>

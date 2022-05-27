@@ -18,7 +18,8 @@
   // import MyPaginator from '@/src/Shared/MyPaginator.vue';
 
   import Image from 'primevue/image';
-  import MyPaginator2 from '@/src/Shared/MyPaginator2.vue';
+
+  import MyPaginator4 from '@/src/Shared/MyPaginator4.vue';
 
   const toast = useToast();
   const confirm = useConfirm();
@@ -128,6 +129,16 @@
       });
     }
   });
+
+  const currentPage = ref(1);
+
+  function onPageChange(page) {
+    // eslint-disable-next-line no-console
+    console.log(page);
+    currentPage.value = page;
+    // eslint-disable-next-line no-console
+    console.log(currentPage.value);
+  }
 </script>
 
 <template layout="Layout">
@@ -220,7 +231,19 @@
         :links="users.links"
         class="flex justify-content-start align-items-center"
       /> -->
-      <MyPaginator2 :data="users" />
+      Total de Usuários: {{ props.users.total }} Página atual:
+      {{ currentPage }}
+
+      <MyPaginator4
+        :max-visible-buttons="3"
+        :total-pages="props.users.last_page"
+        :total="props.users.total"
+        :per-page="props.users.per_page"
+        :current-page="currentPage"
+        :data="users"
+        :links="users.links"
+        @pagechanged="onPageChange"
+      />
     </div>
   </div>
 </template>

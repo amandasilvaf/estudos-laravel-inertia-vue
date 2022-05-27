@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +25,7 @@ class UserController extends Controller
 
         $users = DB::table('users')
         ->where('name', 'like', "%$search%")
-        ->paginate(10);
+        ->paginate(2);
 
         return inertia('amanda.index.ListUserPage', ['users' => $users]);
     }

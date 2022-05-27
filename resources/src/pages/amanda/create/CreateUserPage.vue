@@ -23,7 +23,9 @@
   });
 
   function submit() {
-    form.post(route('users.store'));
+    form.post(route('users.store'), {
+      preserveScroll: true,
+    });
   }
 
   function voltar() {

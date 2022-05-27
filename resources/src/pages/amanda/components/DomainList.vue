@@ -8,22 +8,21 @@
   const prefixes = reactive(['Air', 'Jet', 'Flight']);
   const sufixes = reactive(['Hub', 'Station', 'Mart']);
 
-  function addPrefix(newPrefix) {
+  function addPrefix(newPrefix: string) {
     prefixes.push(newPrefix);
   }
 
-  function addSufix(newSufix) {
+  function addSufix(newSufix: string) {
     sufixes.push(newSufix);
   }
 
-  function deletePrefix(p) {
+  function deletePrefix(p: string) {
     prefixes.splice(prefixes.indexOf(p), 1);
   }
 
-  function deleteSufix(s) {
+  function deleteSufix(s: string) {
     sufixes.splice(sufixes.indexOf(s), 1);
   }
-
   const domains = computed(() => {
     // eslint-disable-next-line no-console
     console.log('generating domains..');
@@ -36,13 +35,21 @@
         arrayDomains.push(newDomain);
       }
     }
-
     return arrayDomains;
   });
+
+  const totalWords = computed(
+    () => prefixes.length + sufixes.length + domains.value.length,
+  );
 </script>
 
 <template>
   <div>
+    <div class="text-center m-5">
+      <h5>
+        Total Words: <span class="badge bg-info">{{ totalWords }}</span>
+      </h5>
+    </div>
     <div id="main">
       <div class="container">
         <div class="row">

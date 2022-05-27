@@ -13,7 +13,7 @@
   };
 
   const props = defineProps<LoginPageProps>();
-  const checked = ref(false);
+  const checked = ref([false]);
 
   const form = reactive({
     user_name: '',
